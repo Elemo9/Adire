@@ -71,12 +71,12 @@ export default function Header() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="absolute inset-0 flex justify-center items-center pointer-events-none"
+            className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none max-sm:top-12"
           >
             <h1
               className="text-2xl lg:text-3xl font-bold bg-clip-text text-transparent
                          bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500
-                         max-sm:text-lg max-sm:leading-4"
+                         max-sm:text-lg max-sm:leading-tight max-sm:px-4 max-sm:mb-4"
               style={{ fontFamily: "var(--font-tesla), sans-serif" }}
             >
               ADIRE MARKET
@@ -93,7 +93,7 @@ export default function Header() {
               ))}
             </div>
 
-            {/* GET STARTED Button with Gradient Wrapper */}
+            {/* GET STARTED Button */}
             <motion.div
               variants={buttonVariants}
               initial="initial"
@@ -141,84 +141,18 @@ export default function Header() {
           <IoClose size={24} className="cursor-pointer" onClick={closeNav} />
         </div>
         <ul className="flex flex-col gap-4 p-6">
-          <Link href="/" onClick={closeNav} aria-label="Home">
-            <li className={`cursor-pointer ${glowClass}`}>HOME</li>
-          </Link>
-          <Link href="/about" onClick={closeNav} aria-label="About">
-            <li className={`cursor-pointer ${glowClass}`}>ABOUT</li>
-          </Link>
-          <Link href="/vision" onClick={closeNav} aria-label="Vision">
-            <li className={`cursor-pointer ${glowClass}`}>VISION</li>
-          </Link>
-          <Link href="/partners" onClick={closeNav} aria-label="Partners">
-            <li className={`cursor-pointer ${glowClass}`}>PARTNERS</li>
-          </Link>
-          <Link href="/signup" onClick={closeNav} aria-label="Signup">
-            <li className={`cursor-pointer ${glowClass}`}>SIGNUP</li>
-          </Link>
-          <Link href="/contact" onClick={closeNav} aria-label="Contact">
-            <li className={`cursor-pointer ${glowClass}`}>CONTACT</li>
-          </Link>
-
-          {/* Social Media Links */}
-          <div className="flex gap-4 pt-4">
-            <Link
-              href="https://x.com/adiremarket"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Twitter"
-            >
-              <img
-                src="/assets/logos/x.svg"
-                alt="Twitter"
-                width={24}
-                height={24}
-                className="hover:opacity-80 transition-opacity"
-              />
-            </Link>
-            <Link
-              href="https://facebook.com/adiremarket"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-            >
-              <img
-                src="/assets/logos/facebook.svg"
-                alt="Facebook"
-                width={24}
-                height={24}
-                className="hover:opacity-80 transition-opacity"
-              />
-            </Link>
-            <Link
-              href="https://instagram.com/adiremarket"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-            >
-              <img
-                src="/assets/logos/instagram.svg"
-                alt="Instagram"
-                width={24}
-                height={24}
-                className="hover:opacity-80 transition-opacity"
-              />
-            </Link>
-            <Link
-              href="https://pinterest.com/adiremarket"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Pinterest"
-            >
-              <img
-                src="/assets/logos/pinterest.svg"
-                alt="Pinterest"
-                width={24}
-                height={24}
-                className="hover:opacity-80 transition-opacity"
-              />
-            </Link>
-          </div>
+          {["HOME", "ABOUT", "VISION", "PARTNERS", "SIGNUP", "CONTACT"].map(
+            (item) => (
+              <Link
+                key={item}
+                href={`/${item.toLowerCase()}`}
+                onClick={closeNav}
+                aria-label={item}
+              >
+                <li className={`cursor-pointer ${glowClass}`}>{item}</li>
+              </Link>
+            )
+          )}
         </ul>
       </div>
     </header>
