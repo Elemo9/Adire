@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Root Variables for Light and Dark Themes */
+:root {
+  --background: #ffffff; /* Light theme background */
+  --foreground: #171717; /* Light theme foreground */
+  --gradient-start: #ff7e5f; /* Light theme gradient start */
+  --gradient-end: #feb47b; /* Light theme gradient end */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a; /* Dark theme background */
+    --foreground: #ededed; /* Dark theme foreground */
+    --gradient-start: #5555ff; /* Dark theme gradient start */
+    --gradient-end: #88ccff; /* Dark theme gradient end */
+  }
+}
+
+/* Optional Body Styling */
+body {
+  color: var(--foreground);
+  background-color: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions between themes */
+}
+
+/* Utility Class for Balanced Text */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Swiper Component Styling */
+.swiper {
+  width: 100vw;
+  height: 90vh;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(20%);
+}
+
+/* Swiper Pagination Styling */
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+  @apply z-50;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+  -webkit-background-clip: text;
+  background-clip: text; /* Standard property for background-clip */
+  -webkit-text-fill-color: transparent; /* Keep the -webkit- prefix */
+}
+.gradient-bg {
+  background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+}
+
+@font-face {
+  font-family: 'Tesla';
+  src: url('/fonts/TESLA.woff2') format('woff2'),
+       url('/fonts/TESLA.woff') format('woff'),
+       url('/fonts/TESLA.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+.text-shadow {
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6), 
+               0 0 10px rgba(255, 255, 255, 0.6);
+}
