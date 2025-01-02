@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
@@ -35,10 +36,35 @@ const buttonVariants = {
   },
 };
 
+// Text glow animation variants
+const textGlowVariants = {
+  initial: { textShadow: "0px 0px 0px rgba(255,255,255,0)" },
+  hover: {
+    textShadow:
+      "0px 0px 6px rgba(255,255,255,0.8), 0px 0px 12px rgba(255,255,255,0.8)",
+    transition: { duration: 0.3 },
+  },
+};
+
 export default function Header() {
   const [openNav, setOpenNav] = useState(false);
   const toggleNav = () => setOpenNav(!openNav);
   const closeNav = () => setOpenNav(false);
+
+  // Define the menu items with their corresponding paths
+  const menuItems = [
+    { name: "HOME", href: "/" },
+    { name: "ABOUT", href: "/about" },
+    { name: "VISION", href: "/vision" },
+    { name: "PARTNERS", href: "/partners" },
+    { name: "CONTACT", href: "/contact" },
+    { name: "SIGNUP", href: "/signup" }, // Only in mobile menu
+  ];
+
+  // Exclude "SIGNUP" from desktop menu
+  const desktopMenuItems = menuItems.filter(item => item.name !== "SIGNUP");
+  const mobileMenuItems = menuItems; // Includes "SIGNUP"
+
   const glowClass =
     "transition-all duration-300 hover:[text-shadow:0_0_8px_#fff,0_0_15px_#fff,0_0_30px_#fff]";
 
@@ -61,6 +87,7 @@ export default function Header() {
               </p>
             </div>
           </Link>
+
           {/* Adire Market Title */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -77,15 +104,17 @@ export default function Header() {
               ADIRE MARKET
             </h1>
           </motion.div>
+
           <div className="flex items-center gap-4 max-sm:gap-2">
             {/* Desktop Menu Links */}
             <div className="text-white flex gap-6 h-fit w-fit tracking-wide text-sm max-xl:text-xs max-xl:hidden">
-              {["HOME", "ABOUT", "VISION", "PARTNERS", "CONTACT"].map((item) => (
-                <Link key={item} href={`/${item.toLowerCase()}`} aria-label={item}>
-                  <p className={`cursor-pointer ${glowClass}`}>{item}</p>
+              {desktopMenuItems.map((item) => (
+                <Link key={item.name} href={item.href} aria-label={item.name}>
+                  <p className={`cursor-pointer ${glowClass}`}>{item.name}</p>
                 </Link>
               ))}
             </div>
+
             {/* GET STARTED Button - Hidden on Mobile */}
             <motion.div
               variants={buttonVariants}
@@ -101,13 +130,14 @@ export default function Header() {
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
-                  className="text-white py-1 px-3 font-semibold rounded-full text-sm max-sm:py-1 max-sm:px-2 max-sm:text-xs hover:opacity-90
+                  className="text-white py-1 px-3 font-semibold rounded-full text-sm hover:opacity-90
                              transition-all hover:[text-shadow:0_0_8px_#fff,0_0_15px_#fff,0_0_30px_#fff]"
                 >
                   GET STARTED
                 </button>
               </Link>
             </motion.div>
+
             {/* Mobile Menu Icon */}
             <GiHamburgerMenu
               color="white"
@@ -118,8 +148,10 @@ export default function Header() {
           </div>
         </div>
       </nav>
+
       {/* Gradient Divider */}
       <div className="w-full h-[2px] bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500"></div>
+
       {/* Mobile Side Menu */}
       <div
         className={`fixed top-0 right-0 w-[70%] max-w-[300px] h-screen text-white transform ${
@@ -131,18 +163,16 @@ export default function Header() {
           <IoClose size={24} className="cursor-pointer" onClick={closeNav} />
         </div>
         <ul className="flex flex-col gap-4 p-6">
-          {["HOME", "ABOUT", "VISION", "PARTNERS", "SIGNUP", "CONTACT"].map(
-            (item) => (
-              <Link
-                key={item}
-                href={`/${item.toLowerCase()}`}
-                onClick={closeNav}
-                aria-label={item}
-              >
-                <li className={`cursor-pointer ${glowClass}`}>{item}</li>
-              </Link>
-            )
-          )}
+          {mobileMenuItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              onClick={closeNav}
+              aria-label={item.name}
+            >
+              <li className={`cursor-pointer ${glowClass}`}>{item.name}</li>
+            </Link>
+          ))}
         </ul>
       </div>
     </header>
