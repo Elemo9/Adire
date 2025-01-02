@@ -76,7 +76,7 @@ export default function Header() {
             <h1
               className="text-2xl lg:text-3xl font-bold bg-clip-text text-transparent
                          bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500
-                         max-sm:text-lg max-sm:leading-tight max-sm:px-4 max-sm:mb-4"
+                         max-sm:text-lg max-sm:leading-tight max-sm:px-5 max-sm:mb-5"
               style={{ fontFamily: "var(--font-tesla), sans-serif" }}
             >
               ADIRE MARKET
@@ -93,12 +93,12 @@ export default function Header() {
               ))}
             </div>
 
-            {/* GET STARTED Button */}
+            {/* GET STARTED Button - Hidden on Mobile */}
             <motion.div
               variants={buttonVariants}
               initial="initial"
               whileHover="hover"
-              className="p-[2px] rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500"
+              className="hidden sm:block p-[2px] rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500"
             >
               <Link href="/signup">
                 <button
