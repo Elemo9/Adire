@@ -5,7 +5,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
 import Image from "next/image";
 import Link from "next/link";
-import localFont from "@next/font/local";
+import localFont from "next/font/local";
 import { motion } from "framer-motion";
 
 import logoImg from "../../../public/assets/logo.png";
