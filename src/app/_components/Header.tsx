@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
@@ -7,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import localFont from "next/font/local";
 import { motion } from "framer-motion";
-
 import logoImg from "../../../public/assets/logo.png";
 import bg1 from "../../../public/assets/bg1.jpeg";
 
@@ -39,10 +37,8 @@ const buttonVariants = {
 
 export default function Header() {
   const [openNav, setOpenNav] = useState(false);
-
   const toggleNav = () => setOpenNav(!openNav);
   const closeNav = () => setOpenNav(false);
-
   const glowClass =
     "transition-all duration-300 hover:[text-shadow:0_0_8px_#fff,0_0_15px_#fff,0_0_30px_#fff]";
 
@@ -53,25 +49,24 @@ export default function Header() {
         <div className="relative flex justify-between w-[90%] max-lg:w-[95%] mx-auto h-fit items-center py-4 max-sm:py-3">
           {/* Logo Section */}
           <Link href="/" aria-label="Go to homepage">
-            <div className="flex flex-col items-center h-fit w-fit cursor-pointer">
+            <div className="flex flex-col items-start h-fit w-fit cursor-pointer max-sm:ml-2"> {/* Shifted to the left */}
               <Image
                 src={logoImg}
                 alt="Adire Market Logo"
-                className="w-[50px] max-sm:w-[40px] aspect-auto"
+                className="w-[50px] max-sm:w-[30px] aspect-auto" // Reduced size on mobile
                 priority
               />
-              <p className="text-xs italic text-gray-400 mt-2 text-center max-sm:text-[8px] max-sm:mt-1">
-                ...A World of Adire Magic.
+              <p className="text-xs italic text-gray-400 mt-2 text-left max-sm:text-[8px] max-sm:mt-1 max-sm:ml-0"> {/* Shifted to the left */}
+                A World of Adire Magic.
               </p>
             </div>
           </Link>
-
           {/* Adire Market Title */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none max-sm:top-12"
+            className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none max-sm:top-8" // Adjusted top for mobile
           >
             <h1
               className="text-2xl lg:text-3xl font-bold bg-clip-text text-transparent
@@ -82,7 +77,6 @@ export default function Header() {
               ADIRE MARKET
             </h1>
           </motion.div>
-
           <div className="flex items-center gap-4 max-sm:gap-2">
             {/* Desktop Menu Links */}
             <div className="text-white flex gap-6 h-fit w-fit tracking-wide text-sm max-xl:text-xs max-xl:hidden">
@@ -92,7 +86,6 @@ export default function Header() {
                 </Link>
               ))}
             </div>
-
             {/* GET STARTED Button - Hidden on Mobile */}
             <motion.div
               variants={buttonVariants}
@@ -115,7 +108,6 @@ export default function Header() {
                 </button>
               </Link>
             </motion.div>
-
             {/* Mobile Menu Icon */}
             <GiHamburgerMenu
               color="white"
@@ -126,10 +118,8 @@ export default function Header() {
           </div>
         </div>
       </nav>
-
       {/* Gradient Divider */}
       <div className="w-full h-[2px] bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500"></div>
-
       {/* Mobile Side Menu */}
       <div
         className={`fixed top-0 right-0 w-[70%] max-w-[300px] h-screen text-white transform ${
