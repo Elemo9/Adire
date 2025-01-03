@@ -5,7 +5,6 @@ import Image from "next/image";
 import landing from "../../../public/assets/landing.jpeg";
 import bg2 from "../../../public/assets/bg1.jpeg";
 
-// Fade-in animation variants
 const fadeIn = (direction = "up", delay = 0) => ({
   hidden: {
     opacity: 0,
@@ -21,7 +20,6 @@ const fadeIn = (direction = "up", delay = 0) => ({
   },
 });
 
-// Button animation variants
 const buttonVariants = {
   initial: { scale: 1 },
   hover: {
@@ -34,7 +32,7 @@ const buttonVariants = {
   },
 };
 
-// Text glow animation variants
+
 const textGlowVariants = {
   initial: { textShadow: "0px 0px 0px rgba(255,255,255,0)" },
   hover: {
@@ -53,7 +51,6 @@ export default function Landing() {
     "Generate and Modify Sketched Patterns with AI.",
   ];
 
-  // Duplicate the text multiple times for seamless scrolling
   const marqueeText = [
     ...slidingText,
     ...slidingText,
