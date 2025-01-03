@@ -4,8 +4,8 @@ import React from "react";
 export default function Vision() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900">
-      {/* Outer gradient frame */}
-      <div className="p-[3px] bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-xl max-w-4xl w-full mx-4">
+      {/* Outer gradient line */}
+      <div className="p-[1px] bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-xl max-w-4xl w-full mx-4">
         {/* Inner container with background & content */}
         <div className="bg-black rounded-xl p-8 text-white">
           {/* Main Title */}
@@ -14,7 +14,7 @@ export default function Vision() {
                        bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500
                        mb-8 text-center uppercase tracking-wider"
           >
-            Empowering the Adire Industry
+            Vision: Empowering the Adire Industry
           </h1>
 
           {/* Intro Paragraph */}
