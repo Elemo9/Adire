@@ -1,19 +1,23 @@
 "use client";
-import React from "react";
-import { FaFacebook, FaInstagram, FaPinterest } from "react-icons/fa";
-import { BsX as FaX } from "react-icons/bs";
-import Link from "next/link";
 
-// If using the App Router, file name: app/contact/page.tsx
-// If using the Pages Router, file name: pages/contact.tsx
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Contact() {
+  const socialPlatforms = [
+    { name: "Facebook", url: "https://www.facebook.com/adiremarket", icon: "/assets/logos/facebook.svg" },
+    { name: "Instagram", url: "https://www.instagram.com/adiremarket", icon: "/assets/logos/instagram.svg" },
+    { name: "X", url: "https://www.x.com/adiremarket", icon: "/assets/logos/x.svg" },
+    { name: "Pinterest", url: "https://www.pinterest.com/adiremarket", icon: "/assets/logos/pinterest.svg" },
+  ];
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900">
-      {/* Outer gradient frame */}
-      <div className="p-[3px] bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-xl max-w-4xl w-full mx-4">
+      {/* Outer gradient line wrapper */}
+      <div className="p-[1px] bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-lg max-w-4xl w-full mx-4">
         {/* Inner container */}
-        <div className="bg-black rounded-xl p-8 text-white">
+        <div className="bg-black rounded-lg p-8 text-white">
           {/* Main Title */}
           <h1
             className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent
@@ -69,43 +73,23 @@ export default function Contact() {
             Stay connected with Adire Market on social media:
           </p>
           <div className="flex gap-6 items-center">
-            <Link
-              href="https://www.facebook.com/adiremarket"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaFacebook
-                size={28}
-                className="text-gray-300 hover:text-white transition-colors"
-              />
-            </Link>
-            <Link
-              href="https://www.instagram.com/adiremarket"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaInstagram
-                size={28}
-                className="text-gray-300 hover:text-white transition-colors"
-              />
-            </Link>
-            <Link
-              href="https://www.x.com/adiremarket"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaX size={28} className="text-gray-300 hover:text-white transition-colors" />
-            </Link>
-            <Link
-              href="https://www.pinterest.com/adiremarket"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaPinterest
-                size={28}
-                className="text-gray-300 hover:text-white transition-colors"
-              />
-            </Link>
+            {socialPlatforms.map(({ name, url, icon }) => (
+              <Link
+                key={name}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visit our ${name}`}
+              >
+                <Image
+                  src={icon}
+                  alt={`${name} Icon`}
+                  width={28}
+                  height={28}
+                  className="hover:opacity-80 transition-opacity"
+                />
+              </Link>
+            ))}
           </div>
         </div>
       </div>
