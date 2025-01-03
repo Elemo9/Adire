@@ -62,7 +62,7 @@ export default function Header() {
   ];
 
   // Exclude "SIGNUP" from desktop menu
-  const desktopMenuItems = menuItems.filter(item => item.name !== "SIGNUP");
+  const desktopMenuItems = menuItems.filter((item) => item.name !== "SIGNUP");
   const mobileMenuItems = menuItems; // Includes "SIGNUP"
 
   const glowClass =
@@ -75,14 +75,14 @@ export default function Header() {
         <div className="relative flex justify-between w-[90%] max-lg:w-[95%] mx-auto h-fit items-center py-4 max-sm:py-3">
           {/* Logo Section */}
           <Link href="/" aria-label="Go to homepage">
-            <div className="flex flex-col items-start h-fit w-fit cursor-pointer max-sm:ml-2"> {/* Shifted to the left */}
+            <div className="flex flex-col items-start h-fit w-fit cursor-pointer max-sm:-ml-2">
               <Image
                 src={logoImg}
                 alt="Adire Market Logo"
                 className="w-[50px] max-sm:w-[30px] aspect-auto" // Reduced size on mobile
                 priority
               />
-              <p className="text-xs italic text-gray-400 mt-2 text-left max-sm:text-[8px] max-sm:mt-1 max-sm:ml-0"> {/* Shifted to the left */}
+              <p className="text-xs italic text-gray-400 mt-2 text-left max-sm:text-[8px] max-sm:mt-1 max-sm:ml-0">
                 A World of Adire Magic.
               </p>
             </div>
@@ -93,7 +93,7 @@ export default function Header() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none max-sm:top-8" // Adjusted top for mobile
+            className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none max-sm:top-8"
           >
             <h1
               className="text-2xl lg:text-3xl font-bold bg-clip-text text-transparent
@@ -156,7 +156,7 @@ export default function Header() {
       <div
         className={`fixed top-0 right-0 w-[70%] max-w-[300px] h-screen text-white transform ${
           openNav ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 z-50 bg-black/80`}
+        } transition-transform duration-300 z-50 bg-black/80 flex flex-col`}
       >
         <div className="flex justify-between items-center p-4 border-b border-gray-700">
           <p className="text-lg font-semibold">Menu</p>
@@ -174,7 +174,67 @@ export default function Header() {
             </Link>
           ))}
         </ul>
+        {/* Social Media Links Section */}
+        <div className="flex justify-center gap-4 p-6">
+          <Link
+            href="https://x.com/adiremarket"
+            aria-label="X (formerly Twitter)"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/assets/logos/x.svg"
+              alt="X"
+              width={24}
+              height={24}
+              className="hover:opacity-80 transition-opacity"
+            />
+          </Link>
+          <Link
+            href="https://www.facebook.com/adiremarket"
+            aria-label="Facebook"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/assets/logos/facebook.svg"
+              alt="Facebook"
+              width={24}
+              height={24}
+              className="hover:opacity-80 transition-opacity"
+            />
+          </Link>
+          <Link
+            href="https://www.instagram.com/adiremarket"
+            aria-label="Instagram"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/assets/logos/instagram.svg"
+              alt="Instagram"
+              width={24}
+              height={24}
+              className="hover:opacity-80 transition-opacity"
+            />
+          </Link>
+          <Link
+            href="https://www.pinterest.com/adiremarket"
+            aria-label="Pinterest"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/assets/logos/pinterest.svg"
+              alt="Pinterest"
+              width={24}
+              height={24}
+              className="hover:opacity-80 transition-opacity"
+            />
+          </Link>
+        </div>
       </div>
     </header>
   );
 }
+
