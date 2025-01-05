@@ -4,19 +4,20 @@ import React from "react";
 export default function About() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900">
-      <div className="p-[3px] bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-xl max-w-4xl w-full mx-4">
-        <div className="bg-black rounded-xl p-8 text-white">
+      {/* Gradient Border */}
+      <div className="p-[1px] bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-lg max-w-3xl w-full mx-4">
+        <div className="bg-black rounded-lg p-6 sm:p-8 text-white">
           {/* Main Title */}
           <h1
-            className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent 
+            className="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent 
                        bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 
-                       mb-8 text-center uppercase tracking-wider"
+                       mb-6 text-center uppercase tracking-wide"
           >
-            About Adire Market
+            About
           </h1>
 
           {/* Intro Paragraph */}
-          <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
+          <p className="text-base sm:text-lg text-gray-300 mb-6 leading-relaxed">
             “The Adire Market App is an innovative e-commerce platform tailored for
             Adire designers, vendors, and enthusiasts. It is designed to preserve
             the cultural heritage of Adire fabrics while making it easy for buyers
@@ -26,10 +27,10 @@ export default function About() {
           </p>
 
           {/* Key Highlights Section */}
-          <h2 className="text-2xl md:text-3xl font-semibold text-gray-100 mb-6 border-b border-gray-700 pb-2">
+          <h2 className="text-lg sm:text-xl font-semibold text-gray-100 mb-4 border-b border-gray-700 pb-2">
             Key Highlights
           </h2>
-          <ul className="list-disc list-inside space-y-3 text-gray-300 text-lg md:text-xl leading-relaxed">
+          <ul className="list-disc list-inside space-y-3 text-gray-300 text-base sm:text-lg leading-relaxed">
             <li>
               <span className="font-semibold text-white">
                 Exclusive design ownership
@@ -54,7 +55,7 @@ export default function About() {
               <span className="font-semibold text-white">
                 Dedicated marketplace
               </span>
-              : Explore and trade in all types of Adire creations custom designed fabrics, 
+              : Explore and trade in all types of Adire creations—custom designed fabrics, 
               ready-to-wear pieces, and exclusive limited collections all in one place.
             </li>
             <li>
