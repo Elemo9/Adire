@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import landing from "../../../public/assets/landing.jpeg";
@@ -32,7 +32,6 @@ const buttonVariants = {
   },
 };
 
-
 const textGlowVariants = {
   initial: { textShadow: "0px 0px 0px rgba(255,255,255,0)" },
   hover: {
@@ -45,7 +44,24 @@ const textGlowVariants = {
 export default function Landing() {
   const [showForm, setShowForm] = useState(false);
 
-  // Base array for the marquee
+  // Prevent background scrolling when modal is open
+  useEffect(() => {
+    const handleScrollLock = () => {
+      if (showForm) {
+        document.body.style.overflow = "hidden";
+        document.body.style.height = "100vh";
+      } else {
+        document.body.style.overflow = "";
+        document.body.style.height = "";
+      }
+    };
+    handleScrollLock();
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.height = "";
+    };
+  }, [showForm]);
+
   const slidingText = [
     "Buy, Sell and Explore Adire.",
     "Generate and Modify Sketched Patterns with AI.",
@@ -58,9 +74,7 @@ export default function Landing() {
     ...slidingText,
   ];
 
-  const toggleForm = () => {
-    setShowForm((prev) => !prev);
-  };
+  const toggleForm = () => setShowForm((prev) => !prev);
 
   return (
     <div className="w-full min-h-screen relative overflow-hidden">
@@ -103,28 +117,6 @@ export default function Landing() {
             <motion.div
               className="flex items-center space-x-16"
               animate={{ x: ["0%", "-50%"] }}
-              transition={{
-                duration: 16,
-                ease: "linear",
-                repeat: Infinity,
-              }}
-            >
-              {marqueeText.map((text, index) => (
-                <span
-                  key={index}
-                  className={`text-2xl md:text-3xl font-semibold bg-clip-text text-transparent ${
-                    index % 2 === 0
-                      ? "bg-gradient-to-r from-pink-500 to-purple-500"
-                      : "bg-gradient-to-r from-purple-500 to-pink-500"
-                  }`}
-                >
-                  {text}
-                </span>
-              ))}
-            </motion.div>
-            <motion.div
-              className="flex items-center space-x-16"
-              animate={{ x: ["0%", "-50%"] }} // Same animation for the second div
               transition={{
                 duration: 16,
                 ease: "linear",
@@ -189,7 +181,9 @@ export default function Landing() {
 
         {/* Airtable Form */}
         {showForm && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
+          <div
+            className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-[1000] modal-wrapper"
+          >
             <div
               className="relative w-full max-w-3xl rounded-lg p-4"
               style={{
@@ -205,7 +199,7 @@ export default function Landing() {
                 width="100%"
                 height="600"
                 style={{
-                  background: "transparent",
+                  background: "dark",
                   border: "none",
                   borderRadius: "8px",
                 }}

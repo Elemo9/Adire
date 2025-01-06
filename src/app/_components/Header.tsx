@@ -75,7 +75,6 @@ export default function Header() {
       document.body.style.overflow = "auto";
     }
 
-    // Cleanup on unmount
     return () => {
       document.body.style.overflow = "auto";
     };
@@ -88,11 +87,11 @@ export default function Header() {
         <div className="relative flex justify-between w-[90%] max-lg:w-[95%] mx-auto h-fit items-center py-4 max-sm:py-3">
           {/* Logo Section */}
           <Link href="/" aria-label="Go to homepage">
-            <div className="flex flex-col items-start h-fit w-fit cursor-pointer"> {/* Removed ml-6 and max-sm:ml-4 */}
+            <div className="flex flex-col items-start h-fit w-fit cursor-pointer -ml-2">
               <Image
                 src={logoImg}
                 alt="Adire Market Logo"
-                className="w-[50px] max-sm:w-[30px] aspect-auto" // Reduced size on mobile
+                className="w-[50px] max-sm:w-[30px] aspect-auto"
                 priority
               />
               <p className="text-xs italic text-gray-400 mt-2 text-left max-sm:text-[8px] max-sm:mt-1 max-sm:ml-0">
@@ -109,7 +108,7 @@ export default function Header() {
             className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none max-sm:top-8"
           >
             <h1
-              className="text-2xl lg:text-3xl font-bold bg-clip-text text-transparent
+              className="text-xl lg:text-2xl font-bold bg-clip-text text-transparent
                          bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500
                          max-sm:text-lg max-sm:leading-tight max-sm:px-5 max-sm:mb-5"
               style={{ fontFamily: "var(--font-tesla), sans-serif" }}
