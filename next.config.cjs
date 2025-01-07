@@ -1,13 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  output: 'export',
+
   webpack: (config) => {
     config.cache = {
       type: 'filesystem',
       buildDependencies: {
         config: [__filename],
       },
-    }
+    };
     config.resolve.alias['punycode'] = require.resolve('punycode/');
     config.module.rules.push({
       test: /\.svg$/,
@@ -18,3 +20,4 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+
