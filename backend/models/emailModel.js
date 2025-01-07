@@ -11,12 +11,13 @@ const db = new sqlite3.Database(dbPath, (err) => {
     console.log('Connected to the SQLite database.');
     db.run(`CREATE TABLE IF NOT EXISTS emails (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      email TEXT UNIQUE NOT NULL
+      email TEXT UNIQUE NOT NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )`, (err) => {
       if (err) {
         console.error("Error creating table:", err.message);
       } else {
-        console.log("Emails table ensured.");
+        console.log("Emails table ensured with created_at timestamp.");
       }
     });
   }
