@@ -7,7 +7,7 @@ const rateLimit = require('express-rate-limit');
 // Rate Limiting Middleware
 const subscribeLimiter = rateLimit({
   windowMs: 60 * 1000,
-  max: 2, // limit each IP to 5 requests per windowMs
+  max: 2,
   message: { error: 'Too many subscription attempts. Please try again later.' }
 });
 
