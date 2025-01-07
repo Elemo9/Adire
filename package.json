@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "output": "next export",
     "start": "next start",
     "lint": "next lint"
   },
@@ -16,6 +17,7 @@
     "express": "^4.21.2",
     "framer-motion": "^11.11.1",
     "next": "^14.2.22",
+    "nodemailer": "^6.9.16",
     "punycode": "^2.3.1",
     "react": "^18",
     "react-dom": "^18",
