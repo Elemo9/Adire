@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import landing from "../../../public/assets/landing.jpeg";
+import landing from "../../../public/assets/landing1.jpeg";
 import bg2 from "../../../public/assets/bg1.jpeg";
 
 const fadeIn = (direction = "up", delay = 0) => ({
@@ -78,13 +78,18 @@ export default function Landing() {
 
   return (
     <div className="w-full min-h-screen relative overflow-hidden">
-      {/* Background Image */}
+      {/* Background Image (no brightness filter) */}
       <Image
         src={landing}
         alt="Adire Market Background"
-        className="w-full h-full object-cover brightness-50 absolute inset-0"
+        className="w-full h-full object-cover absolute inset-0"
         priority
       />
+
+      {/* Dark Overlay to soften the background image */}
+      <div className="absolute inset-0 bg-black bg-opacity-60 z-[1]" />
+
+      {/* Main Content (above the overlay) */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-8 z-10">
         {/* Title Section */}
         <motion.header
@@ -181,14 +186,13 @@ export default function Landing() {
 
         {/* Airtable Form */}
         {showForm && (
-          <div
-            className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-[1000] modal-wrapper"
-          >
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-[1000] modal-wrapper">
             <div
               className="relative w-full max-w-3xl rounded-lg p-4"
               style={{
                 border: "3px solid",
-                borderImage: "linear-gradient(to right, #ec4899, #a855f7, #3b82f6) 1",
+                borderImage:
+                  "linear-gradient(to right, #ec4899, #a855f7, #3b82f6) 1",
                 background: "#ffffff",
                 boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
               }}
