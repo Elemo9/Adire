@@ -28,7 +28,7 @@ export default function WhatToExpect() {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        filter: "brightness(90%) contrast(95%)", // Darken and enhance contrast
+        filter: "brightness(80%) contrast(90%)", // Darken and enhance contrast
       }}
     >
       <div
